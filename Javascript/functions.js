@@ -1,9 +1,12 @@
 let search_input = document.getElementById("search_input");
 
 export function fetcher() {
-  let upper = search_input.value.charAt(0).toUpperCase() + search_input.value.slice(1);
+  let upper =
+    search_input.value.charAt(0).toUpperCase() + search_input.value.slice(1);
 
-  fetch(`https://lobster-app-kps4x.ondigitalocean.app/api/weather/${search_input.value}`)
+  fetch(
+    `https://lobster-app-kps4x.ondigitalocean.app/api/weather/${search_input.value}`
+  )
     .then((response) => response.json())
     .then((data) => {
       let celsius = document.getElementById("celsius");
@@ -41,27 +44,37 @@ export function fetcher() {
           break;
 
         case data.currentWeatherDesc.includes("cloudy rain"):
-          weather_icon.innerHTML = `<i class="weather_icon fa-solid fa-cloud-rain"></i>`;
-          document.body.style.background = "url(./Mobile_Assets/Cloudy_Rain.jpg) no-repeat"
+          weather_icon.src = "./Icons/Cloudy_Rain.svg";
+          document.body.style.background =
+            "url(./Mobile_Assets/Cloudy_Rain.jpg) no-repeat";
           document.body.style.backgroundSize = "cover";
           document.body.style.backgroundPosition = "center";
 
         case data.currentWeatherDesc.includes("rain"):
-          weather_icon.innerHTML = `<i class="weather_icon fa-solid fa-umbrella"></i>`;
-          document.body.style.background = "url(./Mobile_Assets/Rain.jpg) no-repeat"
+          weather_icon.src = "./Icons/Rain_Icon.svg";
+          document.body.style.background =
+            "url(./Mobile_Assets/Rain.jpg) no-repeat";
           document.body.style.backgroundSize = "cover";
           document.body.style.backgroundPosition = "center";
-          
+
         case data.currentWeatherDesc.includes("sunny"):
-          weather_icon.innerHTML = `<i class="weather_icon fa-solid fa-sun"></i>`;
+          weather_icon.src = "./Icons/Sunny.svg";
           document.body.style.background =
             "url(./Mobile_Assets/Sunny.png) no-repeat";
           document.body.style.backgroundSize = "cover";
           document.body.style.backgroundPosition = "center";
           break;
 
+        case data.currentWeatherDesc.includes("cloudy sunny"):
+          weather_icon.src = "./Icons/Cloudy_Sun.svg";
+          document.body.style.background =
+            "url(./Mobile_Assets/Cloudy_Sun.webp) no-repeat";
+          document.body.style.backgroundSize = "cover";
+          document.body.style.backgroundPosition = "center";
+          break;
+
         case data.currentWeatherDesc.includes("snow"):
-          weather_icon.innerHTML = `<i class="weather_icon fa-solid fa-snowflake"></i>`;
+          weather_icon.src = "./Icons/Snow_Icon.svg";
           document.body.style.background =
             "url(./Mobile_Assets/Snow.jpg) no-repeat";
           document.body.style.backgroundSize = "cover";
@@ -92,5 +105,5 @@ export function fetcher() {
       Wind.textContent = `${data.windSpeed + "km/h"}`;
     });
 
-    search_input.value = "";
+  search_input.value = "";
 }

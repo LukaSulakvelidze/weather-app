@@ -95,6 +95,7 @@ form {
 .weather_icon {
   width: 40px;
   height: 40px;
+  fill: white;
 }
 
 .blur_contaier,
@@ -264,7 +265,7 @@ hr {
     width: 90px;
     height: 47px;
   }
-  
+
   form {
     width: 371px;
     margin-right: 15px;
@@ -296,7 +297,7 @@ hr {
   .city_name {
     font-size: 60px;
   }
-  
+
   .current_time {
     font-size: 18px;
   }
